@@ -2,6 +2,8 @@ body{
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+	/* display: flex;
+	flex-direction: column; */
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -14,7 +16,7 @@ h1{
 
 .navibar{
     z-index: 1;
-	background: linear-gradient(to bottom, white, skyblue);
+	background: skyblue;
     justify-content: center;
     display: flex;
 	top: 0;
@@ -31,14 +33,44 @@ h1{
 
 .navibar a{
 	text-decoration: none;
-	color: black;
-    margin: 20px;
+    color: black;
+    margin: 0;
+    white-space: nowrap;
+    position: relative;
+	padding: 10px;
+	overflow: hidden;
+	transition: background 0.2s ease, padding 0.2s ease;
 }
+
+.navibar a:hover {
+    background: radial-gradient(circle at center, white, skyblue);
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 15px;
+	padding-left: 10px;
+}
+
+/* .navibar a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: radial-gradient(circle at center, white, skyblue);
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.navibar a:hover:before {
+    background: radial-gradient(circle at center, white, skyblue);
+} */
 
 .search-bar {
     display: flex;
     justify-content: center;
-    margin-top: 10px; /* Add some space between navibar and search bar */
+    margin-top: 20px;
 }
 
 .search-bar input {
@@ -52,12 +84,12 @@ h1{
     padding: 5px 10px;
     font-size: 16px;
     margin-left: 5px;
-	background-color: skyblue; /* Green background color */
-    color: black; /* White text color */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Add border radius for rounded corners */
+	background-color: skyblue;
+    color: black;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-	transition: background-color 0.3s ease; /* Add a smooth transition effect */
+	transition: background-color 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
