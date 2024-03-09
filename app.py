@@ -1,6 +1,19 @@
 from flask import Flask, jsonify, request, render_template, url_for, redirect, session
 from pymongo import MongoClient
 import secrets
+#####wit
+import os
+from flask import Flask
+from wit import Wit
+#####
+# Get Wit.ai server access token from environment variable
+WIT_AI_ACCESS_TOKEN = os.environ.get('T2WI2OAYN7ZNDU4TDZM2MLCGUDKRGKBB')
+
+# Initialize Wit.ai client with your access token
+witClient = Wit(WIT_AI_ACCESS_TOKEN)
+
+# Define routes and other Flask application logic here...
+
 secret_key = secrets.token_hex(32)
 SECRET_KEY = secret_key
 
@@ -82,5 +95,10 @@ def login():
     return render_template('login.html')
 
 
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+
