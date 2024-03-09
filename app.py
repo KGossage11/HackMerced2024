@@ -38,10 +38,6 @@ def visit():
 def services():
     return render_template('services.html')
 
-@app.route('/medical')
-def medical():
-    return render_template('medical.html')
-
 
 # Add Data to Database
 @app.route('/register', methods=['GET','POST'])
@@ -53,7 +49,7 @@ def register():
         user.insert_one({'users': username, 'password': password, 'email': email})
         session['username'] = username
         session['password'] = password
-        return render_template('register.html', message='User added!')
+        return render_template('web.html', login="true")
     return render_template('register.html')
 
 
