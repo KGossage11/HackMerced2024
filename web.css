@@ -15,7 +15,7 @@ h1{
 .navibar{
     z-index: 1;
 	background: linear-gradient(to bottom, white, skyblue);
-    justify-content: right;
+    justify-content: center;
     display: flex;
 	top: 0;
 	width: 100%;
