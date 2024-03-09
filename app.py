@@ -1,13 +1,19 @@
-from flask import Flask, jsonify, request, render_template, url_for, redirect
+from flask import Flask, jsonify, request, render_template, url_for, redirect, session
 from pymongo import MongoClient
+import secrets
+secret_key = secrets.token_hex(32)
+SECRET_KEY = secret_key
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = SECRET_KEY
 client = MongoClient('mongodb+srv://admin:Password@ucmhackathon2024.gxlbdrt.mongodb.net/?retryWrites=true&w=majority&appName=UCMHackathon2024')
 # Create a mongodb database
 db = client.MyDatabase
 
-# Create a collection
+# Create a collection - users
 user = db.users
+
+
 
 # Print Database 
 @app.route('/get_data')
@@ -51,6 +57,10 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if 'username' in session:
+        print(session['username'])
+        return render_template('web.html')
+
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -64,6 +74,9 @@ def login():
         
         if specificUser['password'] != password:
             return render_template('login.html', message='Password Incorrect!')
+        session['username'] = username
+        session['password'] = password
+        return render_template('web.html', login="true")
     
     return render_template('login.html')
 

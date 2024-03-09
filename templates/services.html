@@ -11,6 +11,10 @@
             <a href="/visit">Your Visits</a>
             <a href="/services">Services Near You</a>
             <!-- <a href="/medical">Medical Questions</a> -->
+            {%if login != "true"%}
+            <a href="/register"> Sign Up </a>
+            <a href="/login">log in</a>
+            {%endif%}
         </nav>
     </div>
 </head>
