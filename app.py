@@ -57,6 +57,7 @@ def profile():
 
 @app.route('/logout')
 def logout():
+    # Remove the everything from the session if it's there
     session.pop('username', None)
     session.pop('password', None)
     session.pop('login', None)
@@ -74,6 +75,7 @@ def register():
         password = request.form['password']
         email = request.form['email']
         user.insert_one({'users': username, 'password': password, 'email': email})
+        #A session keeps the user logged in for as long as the client is alive
         session['username'] = username
         session['password'] = password
         session['login'] = "true"
