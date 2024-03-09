@@ -23,12 +23,24 @@
         </nav>
     </div>
 </head>
+<script>
+
+</script>
+
+
 <body>
     <h1>Hack Merced 2024 Health Website</h1>
-    <div class="search-bar">
-        <input type="text" name="search" id="searchInput" placeholder="What are you looking for...">
-        <button type="submit">Search</button>
+    <form class="search-bar" method="post">
+        <input type="text" name="message" id="message" placeholder="What are you looking for...">
+        <button id="submit">Search</button>
+    </form>
+    <div id="response">
+        {%if response%}
+        {{response}}
+        {%endif%}
     </div>
     <!-- Your content goes here -->
+
 </body>
+<script src="{{ url_for('static', filename='web.js') }}"></script>
 </html>

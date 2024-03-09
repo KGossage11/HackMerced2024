@@ -7,7 +7,7 @@ from flask import Flask
 from wit import Wit
 #####
 # Get Wit.ai server access token from environment variable
-WIT_AI_ACCESS_TOKEN = os.environ.get('T2WI2OAYN7ZNDU4TDZM2MLCGUDKRGKBB')
+WIT_AI_ACCESS_TOKEN = "2CQR4RDC6DTHIKQP47NI5RV6K3NJZQSF"
 
 # Initialize Wit.ai client with your access token
 witClient = Wit(WIT_AI_ACCESS_TOKEN)
@@ -37,8 +37,15 @@ def hello_world():
     return jsonify(users)
 
 # Home Page
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
+    if request.method == 'POST':
+        # Get the message from the user
+        message = request.form['message']
+        # Send the message to Wit.ai
+        response = witClient.message(message)
+        # Return the Wit.ai response
+        return render_template('web.html', response=response)
     return render_template('web.html')
 
 @app.route('/visit')
@@ -108,8 +115,6 @@ def login():
         return render_template('web.html', login="true")
     
     return render_template('login.html')
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
