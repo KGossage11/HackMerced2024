@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='web.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Near You</title>
+    <div class = "navibar">
+        <nav>
+            <a class = "active" href="/">Home</a>
+            <a href="/visit">Your Visits</a>
+            <a href="/services">Services Near You</a>
+            <!-- <a href="/medical">Medical Questions</a> -->
+            {%if login != "true"%}
+                <a href="/register"> Sign Up </a>
+                <a href="/login">log in</a>
+            {%elif%}
+                <a href="/profile">Your Profile</a>
+                <a href="/logout">log out</a>
+            {%endif%}
+        </nav>
+    </div>
+</head>
+<body>
+    
+    <h1>Your Profile</h1>
+
+</body>
+</html>

@@ -38,6 +38,9 @@ def visit():
 def services():
     return render_template('services.html')
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
 
 # Add Data to Database
 @app.route('/register', methods=['GET','POST'])
