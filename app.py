@@ -19,6 +19,24 @@ def hello_world():
 
     return jsonify(users)
 
+# Home Page
+@app.route('/')
+def home():
+    return render_template('web.html')
+
+@app.route('/visit')
+def visit():
+    return render_template('visits.html')
+
+@app.route('/services')
+def services():
+    return render_template('services.html')
+
+@app.route('/medical')
+def medical():
+    return render_template('medical.html')
+
+
 # Add Data to Database
 @app.route('/register', methods=['GET','POST'])
 def register(): 
