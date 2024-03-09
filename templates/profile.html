@@ -11,10 +11,11 @@
             <a href="/visit">Your Visits</a>
             <a href="/services">Services Near You</a>
             <!-- <a href="/medical">Medical Questions</a> -->
-            {%if login != "true"%}
+            {%if session["login"] != "true"%}
                 <a href="/register"> Sign Up </a>
                 <a href="/login">log in</a>
-            {%elif%}
+            {%endif%}
+            {% if session["login"] =="true" %}
                 <a href="/profile">Your Profile</a>
                 <a href="/logout">log out</a>
             {%endif%}

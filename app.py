@@ -55,9 +55,20 @@ def services():
 def profile():
     return render_template('profile.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    session.pop('password', None)
+    session.pop('login', None)
+    return redirect(url_for('home'))
+
 # Add Data to Database
 @app.route('/register', methods=['GET','POST'])
 def register(): 
+    if 'username' in session:
+        print(session['username'])
+        return render_template('web.html')
+
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -65,6 +76,7 @@ def register():
         user.insert_one({'users': username, 'password': password, 'email': email})
         session['username'] = username
         session['password'] = password
+        session['login'] = "true"
         return render_template('web.html', login="true")
     return render_template('register.html')
 
@@ -90,6 +102,7 @@ def login():
             return render_template('login.html', message='Password Incorrect!')
         session['username'] = username
         session['password'] = password
+        session['login'] = "true"
         return render_template('web.html', login="true")
     
     return render_template('login.html')
