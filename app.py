@@ -13,7 +13,7 @@ WIT_AI_ACCESS_TOKEN = os.environ.get('T2WI2OAYN7ZNDU4TDZM2MLCGUDKRGKBB')
 witClient = Wit(WIT_AI_ACCESS_TOKEN)
 
 # Define routes and other Flask application logic here...
-
+#Secret Key is needed for session
 secret_key = secrets.token_hex(32)
 SECRET_KEY = secret_key
 
@@ -25,8 +25,6 @@ db = client.MyDatabase
 
 # Create a collection - users
 user = db.users
-
-
 
 # Print Database 
 @app.route('/get_data')
@@ -53,7 +51,9 @@ def services():
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    userNameData = session['username']
+    emailData = user.find_one({'users': userNameData}).get('email')
+    return render_template('profile.html', user = userNameData, email = emailData)
 
 @app.route('/logout')
 def logout():
