@@ -50,38 +50,6 @@ h1{
 	padding-left: 10px;
 }
 
-.search-bar {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.search-bar input {
-	width: 300px;
-    padding: 5px;
-    font-size: 16px;
-	text-align: left;
-}
-
-.search-bar button {
-    padding: 5px 10px;
-    font-size: 16px;
-    margin-left: 5px;
-	background-color: skyblue;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-	transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.search-bar button:hover {
-    background-color: darkblue;
-	color: white;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
 .container {
     display: flex;
     justify-content: space-around;
@@ -91,9 +59,9 @@ h1{
 
 .box {
     width: 400px;
-    padding: 50px;
-    margin: 30px;
-    border: 1px solid #ddd;
+    padding: 100px;
+    margin: 100px;
+    border: 1px solid #d32c2c;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
