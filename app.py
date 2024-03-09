@@ -51,6 +51,8 @@ def register():
         password = request.form['password']
         email = request.form['email']
         user.insert_one({'users': username, 'password': password, 'email': email})
+        session['username'] = username
+        session['password'] = password
         return render_template('register.html', message='User added!')
     return render_template('register.html')
 
