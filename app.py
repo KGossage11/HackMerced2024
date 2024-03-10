@@ -60,8 +60,32 @@ def home():
         return render_template('web.html', response=wit_response, entities=entities)
     return render_template('web.html')
 
-@app.route('/visit')
+@app.route('/visit', methods=['GET', 'POST'])
 def visit():
+    if request.method == 'POST':
+        # Get the message from the user
+        date = request.form['date']
+        time = request.form['time']
+        reminderOne = request.form['reminderOne']
+        reminderTwo = request.form['reminderTwo']
+        
+        # Get user data from MongoDB
+        username = session.get('username')
+
+        userNameData = user.find_one({'users': username})
+        if userNameData:
+            userNameData['visit'] = {'date': date, 'time': time, 'reminderOne': reminderOne, 'reminderTwo': reminderTwo}
+            session['visit'] = "true"
+        user.update_one({'users': username}, {'$set': {'visit': userNameData['visit']}})
+        return render_template('visits.html', date=date, time=time, reminderOne=reminderOne, reminderTwo=reminderTwo)
+    
+    visit_data = user.find_one({'users': session.get('username')}).get('visit')
+    if visit_data:
+        date = visit_data.get('date')
+        time = visit_data.get('time')
+        reminderOne = visit_data.get('reminderOne')
+        reminderTwo = visit_data.get('reminderTwo')
+        return render_template('visits.html', date=date, time=time, reminderOne=reminderOne, reminderTwo=reminderTwo)
     return render_template('visits.html')
 
 @app.route('/services')
@@ -77,18 +101,15 @@ def profile():
 @app.route('/logout')
 def logout():
     # Remove the everything from the session if it's there
-    session.pop('username', None)
+    session.pop('userna[Reminder Details]me', None)
     session.pop('password', None)
     session.pop('login', None)
+    session.pop('visit', None)
     return redirect(url_for('home'))
 
 # Add Data to Database
 @app.route('/register', methods=['GET','POST'])
 def register(): 
-    if 'username' in session:
-        print(session['username'])
-        return render_template('web.html')
-
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -104,10 +125,6 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if 'username' in session:
-        print(session['username'])
-        return render_template('web.html')
-
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
