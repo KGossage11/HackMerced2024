@@ -21,9 +21,9 @@
             {%endif%}
         </nav>
     </div>
+    <script defer src="{{ url_for('static', filename='web.js') }}"></script>
 </head>
 <script>
-
 </script>
 
 
@@ -41,15 +41,17 @@
                     {% if not found_entity %}
                         <p>Please seek: {{ entity['value'] }}</p>
                         {% set found_entity = true %}
+                        <script>
+                            var seekValue = "{{ entity['value']}}";
+                        </script>
                     {% endif %}
                 {% endfor %}
             {% endfor %}
         {% endif %}
     </div>
-    
+
     <!-- Your content goes here -->
-    
+
 
 </body>
-<script src="{{ url_for('static', filename='web.js') }}"></script>
 </html>

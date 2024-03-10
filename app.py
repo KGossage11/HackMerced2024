@@ -57,6 +57,7 @@ def home():
             entities = "None"
 
         # Return the Wit.ai response
+        # return render_template('web.html', response=wit_response, entities=entities)
         return render_template('web.html', response=wit_response, entities=entities)
     return render_template('web.html')
 
