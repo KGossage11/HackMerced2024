@@ -26,18 +26,28 @@
     <h1>Services Near You</h1>
     <div class="search-bar">
         <input type="text" name="search" id="searchInput" placeholder="What are you looking for..." onfocus="highlightInput()">
-        <button type="button" onclick="search()">Search</button>
+        <button type="button" onclick="searchNearbyHospitals()">Search</button>
+    </div>
+    <div>
+    <iframe
+    width="600"
+    height="450"
+    style="border:0"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    id="mapFrame">
+    </iframe>
     </div>
     <script>
-            function highlightInput(){
-                document.getElementById("searchInput").select();
-            }
+        function highlightInput(){
+            document.getElementById("searchInput").select();
+        }
 
-            function search(){
-                var userInput = document.getElementById("searchInput").value;
-                window.open("https://www.google.com/maps/search/" + encodeURIComponent(userInput), "_blank");
-            }
-
+        function searchNearbyHospitals(){
+            var mapFrame = document.getElementById("mapFrame");
+            mapFrame.src = "https://www.google.com/maps/embed/v1/search?key=AIzaSyCzXwYdNc0k3LeB-PW88FnhPXwvVKHgDb4&q=" + encodeURIComponent(document.getElementById("searchInput").value + "in+Merced");
+        }
     </script>
 </body>
 </html>
