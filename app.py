@@ -49,8 +49,15 @@ def home():
             wit_response = response['intents'][0]['name']
         else:  # If no intent is detected
             wit_response = 'Sorry, I do not understand.'
+
+        if 'entities' in response and len(response['entities']) > 0:
+            # Extract the entities
+            entities = response['entities']
+        else:
+            entities = "None"
+
         # Return the Wit.ai response
-        return render_template('web.html', response=wit_response)
+        return render_template('web.html', response=wit_response, entities=entities)
     return render_template('web.html')
 
 @app.route('/visit')
