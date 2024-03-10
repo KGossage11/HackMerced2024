@@ -7,7 +7,7 @@ from flask import Flask
 from wit import Wit
 #####
 # Get Wit.ai server access token from environment variable
-WIT_AI_ACCESS_TOKEN = "2CQR4RDC6DTHIKQP47NI5RV6K3NJZQSF"
+WIT_AI_ACCESS_TOKEN = "INSERT WIT.AI ACCESS TOKEN HERE"
 
 # Initialize Wit.ai client with your access token
 witClient = Wit(WIT_AI_ACCESS_TOKEN)
@@ -19,7 +19,7 @@ SECRET_KEY = secret_key
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
-client = MongoClient('mongodb+srv://admin:Password@ucmhackathon2024.gxlbdrt.mongodb.net/?retryWrites=true&w=majority&appName=UCMHackathon2024')
+client = MongoClient('INSERT MONGODB CLIENT HERE')
 # Create a mongodb database
 db = client.MyDatabase
 
@@ -160,6 +160,8 @@ def login():
 if __name__ == "__main__":
     app.run(debug=True)
 
+#I broke my leg
+#I need a doctor
 
 
 
