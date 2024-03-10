@@ -13,7 +13,6 @@
             <!-- <a href="/medical">Medical Questions</a> -->
             <!-- Goes to the login screen -->
             {%if session["login"] != "true"%}
-            <a href="/register"> Sign Up </a>
             <a href="/login">log in</a>
             {%endif%}
             {% if session["login"] =="true" %}

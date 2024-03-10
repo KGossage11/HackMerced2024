@@ -12,7 +12,6 @@
             <a href="/services">Services Near You</a>
             <!-- <a href="/medical">Medical Questions</a> -->
             {%if session["login"] != "true"%}
-                <a href="/register"> Sign Up </a>
                 <a href="/login">log in</a>
             {%endif%}
             {% if session["login"] =="true" %}
@@ -36,6 +35,7 @@
                 <input type="password" id="password" name="password"><br>
                 <button type="submit">Login</button>
             </form>
+            <p style="font-size: 10px;">Don't have an account? <a href="/register">Sign up</a></p>
         </div>
     </div>
 </body>
