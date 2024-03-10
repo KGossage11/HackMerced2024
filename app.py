@@ -94,13 +94,16 @@ def visit():
 
 @app.route('/services')
 def services():
-    return render_template('services.html')
+    if 'city' in session:
+        return render_template('services.html', city=session['city'])
+    return render_template('services.html', city="merced")
 
 @app.route('/profile')
 def profile():
     userNameData = session['username']
+    cityNameData = session['city']
     emailData = user.find_one({'users': userNameData}).get('email')
-    return render_template('profile.html', user = userNameData, email = emailData)
+    return render_template('profile.html', user = userNameData, email = emailData, city=cityNameData)
 
 @app.route('/logout')
 def logout():
@@ -109,6 +112,7 @@ def logout():
     session.pop('password', None)
     session.pop('login', None)
     session.pop('visit', None)
+    session.pop('city', None)
     return redirect(url_for('home'))
 
 # Add Data to Database
@@ -118,11 +122,13 @@ def register():
         username = request.form['username']
         password = request.form['password']
         email = request.form['email']
-        user.insert_one({'users': username, 'password': password, 'email': email})
+        city = request.form['city']
+        user.insert_one({'users': username, 'password': password, 'email': email, 'city': city, 'visit': {}})
         #A session keeps the user logged in for as long as the client is alive
         session['username'] = username
         session['password'] = password
         session['login'] = "true"
+        session['city'] = city
         return render_template('web.html', login="true")
     return render_template('register.html')
 
@@ -145,6 +151,7 @@ def login():
         session['username'] = username
         session['password'] = password
         session['login'] = "true"
+        session['city'] = specificUser['city']
         return render_template('web.html', login="true")
     
     return render_template('login.html')
