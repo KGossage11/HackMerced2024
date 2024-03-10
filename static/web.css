@@ -15,7 +15,13 @@ body{
 
 h1{
     text-align: center;
-	font-family: Arial;
+    font-family: Arial, sans-serif;
+    text-shadow: 3px 3px 5px #f787bb;
+    color: white;
+    transition: transform 1.5s ease;
+}
+h1:hover{
+    transform:rotate3d(0, 5, 0, 90deg);
 }
 
 .navibar{
