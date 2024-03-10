@@ -39,11 +39,13 @@
                 {% set found_entity = false %}
                 {% for entity in entity_list %}
                     {% if not found_entity %}
+                    <div class="container">
                         <p>Please seek: {{ entity['value'] }}</p>
                         {% set found_entity = true %}
                         <script>
                             var seekValue = "{{ entity['value']}}";
                         </script>
+                    </div>
                     {% endif %}
                 {% endfor %}
             {% endfor %}
