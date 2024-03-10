@@ -23,7 +23,7 @@
 </head>
 <body>
     <h1>Your Visits</h1>
-    {%if session["login"] == "true" and session['visit'] != "true"%}
+    {%if session["login"] == "true" %}
     <!-- Set up an appointment -->
     <div class="container">
         <div class="box">
@@ -41,28 +41,25 @@
                 <button type="submit">Book</button>
             </form>
     </div>
-
     <!-- Your content goes here -->
     <div class="container">
         <div class="box">
             <h2>Next Appointment</h2>
-            {%if date and time%}
+            {% if date%}
             <p>Date: {{date}}</p>
-            <p>Time: {{time}}</p>
             {%endif%}
-            {%if not date and not time%}
-            <p>No upcoming appointments</p>
+            {%if time%}
+            <p>Time: {{time}}</p>
             {%endif%}
         </div>
 
         <div class="box">
             <h2>Reminders</h2>
-            {%if reminderOne and reminderTwo%}
+            {%if reminderOne%}
             <p>Reminder 1: {{reminderOne}}</p>
-            <p>Reminder 2: {{reminderTwo}}</p>
             {%endif%}
-            {%if not reminderOne and not reminderTwo%}
-            <p>No Reminders</p>
+            {%if reminderTwo%}
+            <p>Reminder 2: {{reminderTwo}}</p>
             {%endif%}
         </div>
         <!-- Add more boxes as needed for other information -->

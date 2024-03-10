@@ -78,15 +78,19 @@ def visit():
             session['visit'] = "true"
         user.update_one({'users': username}, {'$set': {'visit': userNameData['visit']}})
         return render_template('visits.html', date=date, time=time, reminderOne=reminderOne, reminderTwo=reminderTwo)
-    if 'username' in session:
-        if 'visit' in session:
-            visit_data = user.find_one({'users': session.get('username')}).get('visit')
-            date = visit_data.get('date')
-            time = visit_data.get('time')
-            reminderOne = visit_data.get('reminderOne')
-            reminderTwo = visit_data.get('reminderTwo')
-            return render_template('visits.html', date=date, time=time, reminderOne=reminderOne, reminderTwo=reminderTwo)
-    return render_template('visits.html')
+    
+    username=session.get('username')
+    userNameData = user.find_one({'users': username})
+    if userNameData and 'visit' in userNameData:
+        visit_data = userNameData.get('visit')
+        date = visit_data.get('date')
+        time = visit_data.get('time')
+        reminderOne = visit_data.get('reminderOne')
+        reminderTwo = visit_data.get('reminderTwo')
+        session['visit'] = "true"
+        return render_template('visits.html', date=date, time=time, reminderOne=reminderOne, reminderTwo=reminderTwo)
+    else:
+        return render_template('visits.html', date="", time="", reminderOne="", reminderTwo="")
 
 @app.route('/services')
 def services():
