@@ -78,9 +78,8 @@ def visit():
             session['visit'] = "true"
         user.update_one({'users': username}, {'$set': {'visit': userNameData['visit']}})
         return render_template('visits.html', date=date, time=time, reminderOne=reminderOne, reminderTwo=reminderTwo)
-    
-    visit_data = user.find_one({'users': session.get('username')}).get('visit')
-    if visit_data:
+    if 'username' in session:
+        visit_data = user.find_one({'users': session.get('username')}).get('visit')
         date = visit_data.get('date')
         time = visit_data.get('time')
         reminderOne = visit_data.get('reminderOne')
@@ -101,7 +100,7 @@ def profile():
 @app.route('/logout')
 def logout():
     # Remove the everything from the session if it's there
-    session.pop('userna[Reminder Details]me', None)
+    session.pop('username', None)
     session.pop('password', None)
     session.pop('login', None)
     session.pop('visit', None)
