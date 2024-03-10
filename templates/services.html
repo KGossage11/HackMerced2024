@@ -29,15 +29,15 @@
         <button type="button" onclick="searchNearbyHospitals()">Search</button>
     </div>
     <div class="container">
-    <iframe
-    width="600"
-    height="450"
-    style="border:0"
-    loading="lazy"
-    allowfullscreen
-    referrerpolicy="no-referrer-when-downgrade"
-    id="mapFrame">
-    </iframe>
+        <iframe
+        width="600"
+        height="450"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        id="mapFrame">
+        </iframe>
     </div>
     <script>
         function highlightInput(){
@@ -46,7 +46,7 @@
 
         function searchNearbyHospitals(){
             var mapFrame = document.getElementById("mapFrame");
-            mapFrame.src = "https://www.google.com/maps/embed/v1/search?key=AIzaSyCzXwYdNc0k3LeB-PW88FnhPXwvVKHgDb4&q=" + encodeURIComponent(document.getElementById("searchInput").value + "in+Merced");
+            mapFrame.src = "https://www.google.com/maps/embed/v1/search?key=AIzaSyCzXwYdNc0k3LeB-PW88FnhPXwvVKHgDb4&q=" + encodeURIComponent(document.getElementById("searchInput").value + "in+{{city}}");
         }
     </script>
 </body>
