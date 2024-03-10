@@ -2,14 +2,20 @@ body{
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    /* background-image: url('hackmerced_doctor_image.jpg'); */
-    background: linear-gradient(to top, #1e2f7c, #91a6ff 40%, white);
+    /* background-image: url('merced_hospital.jpg'); */
+    /* background: linear-gradient(to top, #2f45a7, #91a6ff 40%, white); */
+    /* background: url('hackmerced_doctor_image.jpg') center/cover, linear-gradient(to top, #2f45a7, #91a6ff 40%, white); */
+    /* background: linear-gradient(to top, #2f45a7, #6f89fb, #91a5ffeb 20%, transparent), url('merced_hospital.jpg') center/cover; */
+    background: linear-gradient(to top, #f787bb, #f7accfe7 20%, transparent), url('merced_hospital.jpg') center/cover;
+    background-color: #f7accf;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
 
 h1{
@@ -19,7 +25,7 @@ h1{
 
 .navibar{
     z-index: 1;
-	background: linear-gradient(to bottom, #91a6ff, white);
+	background: linear-gradient(to bottom, #f7accf, white);
     box-shadow: white;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.059);
     justify-content: center;
@@ -36,7 +42,7 @@ h1{
 	margin: auto;
 }
 .navibar:hover{
-    background: #91a6ff;
+    background: #f7accf;
 }
 
 .navibar a{
@@ -51,7 +57,7 @@ h1{
 }
 
 .navibar a:hover {
-    background: radial-gradient(circle at center, white, #91a6ff);
+    background: radial-gradient(circle at center, white, #f7accf);
 	padding-top: 10px;
 	padding-right: 10px;
 	padding-bottom: 15px;
@@ -60,7 +66,7 @@ h1{
 
 .search-bar {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     margin-top: 300px;
     margin-left: 20px;
 }
@@ -108,11 +114,11 @@ h1{
     transition: transform 0.3s ease; */
     /*  */
     border: 5px solid;
-    border-image: linear-gradient(to top, white, #91a6ff);
+    border-image: linear-gradient(to top, white, #f7accf);
     border-image-slice: 1;
     border-radius: 8px;
     background-color: #ffffff;
-    background-image: linear-gradient(to bottom, #ffffff 0%, #91a6ff 74%);
+    background-image: linear-gradient(to bottom, #ffffff 0%, #f7accf 74%);
     transition: transform 0.3s ease;
     /* text-align: center; */
 }
@@ -126,11 +132,11 @@ h1{
     padding: 50px;
     margin: 30px;
     border: 5px solid;
-    border-image: linear-gradient(to top, white, #91a6ff);
+    border-image: linear-gradient(to top, white, #f7accf);
     border-image-slice: 1;
     border-radius: 8px;
     background-color: #ffffff;
-    background-image: linear-gradient(to bottom, #ffffff 0%, #91a6ff 74%);
+    background-image: linear-gradient(to bottom, #ffffff 0%, #f7accf 74%);
     transition: transform 0.3s ease;
     text-align: center;
 }
