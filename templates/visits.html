@@ -24,22 +24,57 @@
 </head>
 <body>
     <h1>Your Visits</h1>
+    {%if session["login"] == "true" and session['visit'] != "true"%}
+    <!-- Set up an appointment -->
+    <div class="container">
+        <div class="box">
+            <h2>Book an Appointment</h2>
+            <form method="post">
+                <label for="date">Date:</label><br>
+                <input type="date" id="date" name="date"><br>
+                <label for="time">Time:</label><br>
+                <input type="time" id="time" name="time"><br>
+                <label for="reminderOne"> Reminder 1:</label><br>
+                <input type="text" id="reminderOne" name="reminderOne"><br>
+                <label for="reminderTwo"> Reminder 2:</label><br>
+                <input type="text" id="reminderTwo" name="reminderTwo"><br>
+
+                <button type="submit">Book</button>
+            </form>
+    </div>
+
     <!-- Your content goes here -->
     <div class="container">
         <div class="box">
             <h2>Next Appointment</h2>
-            <p>Date: [Date]</p>
-            <p>Time: [Time]</p>
+            {%if date and time%}
+            <p>Date: {{date}}</p>
+            <p>Time: {{time}}</p>
+            {%endif%}
+            {%if not date and not time%}
+            <p>No upcoming appointments</p>
+            {%endif%}
         </div>
 
         <div class="box">
             <h2>Reminders</h2>
-            <p>Reminder 1: [Reminder Details]</p>
-            <p>Reminder 2: [Reminder Details]</p>
+            {%if reminderOne and reminderTwo%}
+            <p>Reminder 1: {{reminderOne}}</p>
+            <p>Reminder 2: {{reminderTwo}}</p>
+            {%endif%}
+            {%if not reminderOne and not reminderTwo%}
+            <p>No Reminders</p>
+            {%endif%}
         </div>
-
         <!-- Add more boxes as needed for other information -->
-
     </div>
+    {% endif %}
+    {% if session["login"] != "true" %}
+    <div class="container">
+        <div class="box">
+            <h2>Log In to View Your Visits or Book an appointment</h2>
+            <p>Log in to view your upcoming appointments and reminders.</p>
+    </div>
+    {% endif %}
 </body>
 </html>

@@ -35,13 +35,21 @@
         <button id="submit">Search</button>
     </form>
     <div id="response">
-        {%if response%}
-        {{response}}
-        <br>
-        {{entities}}
-        {%endif%}
+        {% if response %}
+            {% for entity_name, entity_list in entities.items() %}
+                {% set found_entity = false %}
+                {% for entity in entity_list %}
+                    {% if not found_entity %}
+                        <p>Please seek: {{ entity['value'] }}</p>
+                        {% set found_entity = true %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
     </div>
+    
     <!-- Your content goes here -->
+    
 
 </body>
 <script src="{{ url_for('static', filename='web.js') }}"></script>
